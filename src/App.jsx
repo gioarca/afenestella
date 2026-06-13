@@ -261,10 +261,10 @@ export default function App() {
               <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-[#D8B26A]/30 blur-2xl" />
               <div className="absolute -bottom-8 -right-4 h-28 w-28 rounded-full bg-white/15 blur-2xl" />
 
-              <div className="float-slow overflow-hidden rounded-[36px] border-[14px] border-white bg-[#F8F5EE] shadow-[0_40px_120px_rgba(0,0,0,0.26)]">
-                <div className="relative aspect-[4/5]">
+              <div className="float-slow overflow-hidden rounded-[36px] border-14 border-white bg-[#F8F5EE] shadow-[0_40px_120px_rgba(0,0,0,0.26)]">
+                <div className="relative aspect-4/5">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.92),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(14,77,120,0.14))]" />
-                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-[1px] bg-[#0E4D78]/10">
+                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-px bg-[#0E4D78]/10">
                     <div className="bg-[linear-gradient(145deg,#fefdf8,#e7f2fb)]" />
                     <div className="bg-[linear-gradient(145deg,#0E4D78,#1C6EA4)]" />
                     <div className="bg-[linear-gradient(145deg,#dfeaf3,#fbf8f1)]" />
@@ -379,7 +379,7 @@ export default function App() {
           </div>
 
           <div className="overflow-hidden rounded-[36px] border border-[#0E4D78]/8 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-            <div className="grid h-full min-h-[420px] grid-rows-[1fr_auto]">
+            <div className="grid h-full min-h-105 grid-rows-[1fr_auto]">
               <div className="bg-[radial-gradient(circle_at_20%_30%,rgba(28,110,164,0.18),transparent_20%),radial-gradient(circle_at_78%_18%,rgba(216,178,106,0.36),transparent_18%),linear-gradient(180deg,#0E4D78 0%,#1C6EA4 100%)] p-8 text-white">
                 <div className="flex h-full items-end">
                   <div className="max-w-md">
@@ -396,6 +396,15 @@ export default function App() {
               </div>
 
               <div className="flex items-center justify-between gap-4 p-6">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s&#39;a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
+                  width="600"
+                  height="450"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
                 <div>
                   <p className="text-sm font-semibold text-[#0E4D78]">
                     Via Luigi Mazzella 38
@@ -438,7 +447,7 @@ export default function App() {
                 <article
                   key={item.title}
                   className={`mb-5 overflow-hidden rounded-[30px] border border-[#0E4D78]/8 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.05)] ${
-                    tall ? "aspect-[4/5]" : "aspect-[1/1]"
+                    tall ? "aspect-4/5" : "aspect-square"
                   }`}
                 >
                   <div className="flex h-full flex-col justify-between p-5">
@@ -580,12 +589,16 @@ export default function App() {
         {/* FOOTER */}
         <footer className="pb-8">
           <div className="rounded-[40px] bg-[#0E4D78] px-6 py-16 text-center text-white sm:px-10 lg:px-16">
-            <p className="mx-auto max-w-4xl font-serif text-3xl leading-[1.25] sm:text-4xl lg:text-5xl">
+            <p className="mx-auto max-w-4xl font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
               Realizzato tra il mare di Ischia, le mani degli artigiani e il
               tempo necessario a fare le cose bene.
             </p>
             <p className="mt-10 text-sm uppercase tracking-[0.28em] text-white/70">
               'a Fenestella · Artigianato Ischitano
+            </p>
+            <p className="mt-10 text-sm uppercase tracking-[0.28em] text-white/70">
+              p.iva 09201441210 - A FENESTELLA DI DI MEGLIO FILOMENA - REA
+              1016482
             </p>
           </div>
         </footer>

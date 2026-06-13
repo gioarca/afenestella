@@ -400,11 +400,11 @@ export default function App() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s&#39;a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
                   width="600"
                   height="450"
-                  style="border:0;"
-                  allowfullscreen=""
+                  style={{ border: 0 }}
+                  allowFullScreen
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
                 <div>
                   <p className="text-sm font-semibold text-[#0E4D78]">
                     Via Luigi Mazzella 38
@@ -570,13 +570,13 @@ export default function App() {
                 </div>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Button
+                  <a
                     href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
                     variant="primary"
                     target="_blank"
                   >
-                    Apri Maps
-                  </Button>
+                    <Button>Apri Maps</Button>
+                  </a>
                   <Button href="tel:+390817081860" variant="light">
                     Chiama
                   </Button>

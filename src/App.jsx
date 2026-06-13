@@ -395,31 +395,49 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between gap-4 p-6">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s&#39;a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
-                  width="600"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div>
-                  <p className="text-sm font-semibold text-[#0E4D78]">
-                    Via Luigi Mazzella 38
-                  </p>
-                  <p className="mt-1 text-sm text-slate-500">
-                    80077 Ischia Ponte, NA
-                  </p>
+              <div className="grid gap-6 rounded-3xl border border-[#0E4D78]/10 bg-white p-5 shadow-sm sm:grid-cols-[1.2fr_0.8fr] sm:items-center">
+                {/* MAPPA */}
+                <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s'a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
+                    className="h-64 w-full sm:h-72"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
-                <a
-                  href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#0B3F63]"
-                >
-                  Apri Maps <ArrowRight size={16} />
-                </a>
+
+                {/* INFO + CTA */}
+                <div className="flex h-full flex-col justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                      Dove siamo
+                    </p>
+
+                    <p className="mt-2 text-base font-semibold text-[#0E4D78]">
+                      Via Luigi Mazzella 38
+                    </p>
+
+                    <p className="mt-1 text-sm text-slate-500">
+                      80077 Ischia Ponte, Napoli
+                    </p>
+
+                    <p className="mt-4 text-sm leading-6 text-slate-600">
+                      Nel cuore del borgo storico, a pochi passi dal Castello
+                      Aragonese.
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_30px_rgba(14,77,120,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0B3F63]"
+                  >
+                    Apri su Google Maps <ArrowRight size={16} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

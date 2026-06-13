@@ -1,309 +1,350 @@
 import React from "react";
 import {
   ArrowRight,
+  ChevronRight,
+  Clock3,
   MapPin,
   Phone,
   Sparkles,
-  Star,
   Waves,
-  ChevronRight,
-  Clock3,
-  ShieldCheck,
-  Palette,
+  // Palette,
   HandHeart,
   Truck,
-  Diamond,
+  Shell,
+  Landmark,
+  ScanText,
+  CircleDashed,
 } from "lucide-react";
 
-const highlights = [
+const gallery = [
   {
-    title: "Ceramiche e oggetti d’arredo",
-    text: "Pezzi selezionati con un’estetica pulita, mediterranea e artigianale.",
-    icon: Palette,
+    title: "Ceramiche blu",
+    label: "Smalti, luce, mare",
   },
   {
-    title: "Lavorazione manuale",
-    text: "Ogni dettaglio comunica materia, pazienza e tradizione ischitana.",
-    icon: HandHeart,
+    title: "Piatti decorativi",
+    label: "Oggetti da parete",
   },
   {
-    title: "Spirito da vetrina boutique",
-    text: "Una homepage pensata per raccontare il negozio in modo elegante e immediato.",
-    icon: Diamond,
-  },
-];
-
-const products = [
-  {
-    name: "Piatti decorativi",
-    desc: "Forme essenziali, smalti lucidi, richiami marini.",
+    title: "Piccoli doni",
+    label: "Regali autentici",
   },
   {
-    name: "Vasi e piccoli complementi",
-    desc: "Oggetti da esposizione per ambienti moderni o classici.",
+    title: "Vasi e complementi",
+    label: "Arredo mediterraneo",
   },
   {
-    name: "Regali artigianali",
-    desc: "Idee da portare via con un packaging semplice e curato.",
+    title: "Maioliche",
+    label: "Pattern ischitani",
+  },
+  {
+    title: "Dettagli di bottega",
+    label: "Materia e mano",
   },
 ];
 
-const steps = [
+const process = [
   {
-    title: "Scopri la collezione",
-    text: "Esplora una selezione di pezzi in stile ischitano, con tono sobrio e autentico.",
+    icon: Waves,
+    title: "Mare",
+    text: "La tavolozza nasce dal blu profondo, dal bianco della calce e dalla luce dell’isola.",
+  },
+  {
     icon: Sparkles,
+    title: "Ispirazione",
+    text: "Forme semplici e colori essenziali, pensati per evocare Ischia senza dirlo troppo.",
   },
   {
-    title: "Entra in negozio",
-    text: "Una vetrina digitale che guida il visitatore verso l’esperienza fisica.",
-    icon: MapPin,
+    icon: HandHeart,
+    title: "Lavorazione",
+    text: "Ogni pezzo comunica cura, tempo e una manualità che si vede prima ancora di toccare.",
   },
   {
-    title: "Porta a casa un pezzo unico",
-    text: "La pagina enfatizza unicità, artigianalità e memoria del territorio.",
     icon: Truck,
+    title: "Oggetto",
+    text: "Il risultato è un frammento da portare via: piccolo, elegante, memorabile.",
   },
 ];
 
-function Badge({ children }) {
+function SectionHeading({ eyebrow, title, text, centered = false }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/90 px-4 py-2 text-sm font-medium text-sky-900 shadow-sm backdrop-blur">
-      <span className="h-2 w-2 rounded-full bg-sky-500" />
-      {children}
-    </span>
-  );
-}
-
-function SectionTitle({ eyebrow, title, text }) {
-  return (
-    <div className="max-w-2xl">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-sky-500">
+    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#1C6EA4]">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+      <h2 className="font-serif text-4xl leading-[1.05] text-[#0E4D78] sm:text-5xl lg:text-6xl">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">
+      <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
         {text}
       </p>
     </div>
   );
 }
 
+function Pill({ children }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-[#D8B26A] bg-white/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-[#0E4D78] shadow-sm backdrop-blur">
+      {children}
+    </span>
+  );
+}
+
+function Button({ children, variant = "primary", href = "#" }) {
+  const base =
+    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition duration-300";
+  if (variant === "ghost") {
+    return (
+      <a
+        href={href}
+        className={`${base} border border-white/70 bg-white/5 text-white hover:bg-white/15`}
+      >
+        {children}
+      </a>
+    );
+  }
+  if (variant === "light") {
+    return (
+      <a
+        href={href}
+        className={`${base} border border-[#0E4D78] bg-transparent text-[#0E4D78] hover:bg-[#0E4D78] hover:text-white`}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <a
+      href={href}
+      className={`${base} bg-[#0E4D78] text-white shadow-[0_18px_50px_rgba(14,77,120,0.22)] hover:-translate-y-0.5 hover:bg-[#0B3F63]`}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.14),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(59,130,246,0.12),_transparent_26%),linear-gradient(180deg,_#ffffff_0%,_#f8fbff_45%,_#eef7ff_100%)] text-slate-900">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        {/* Top bar */}
-        <header className="flex flex-col gap-4 rounded-4xl border border-sky-100 bg-white/80 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-600 text-white shadow-lg shadow-sky-200">
-              <Waves size={24} />
-            </div>
-            <div>
-              <p className="text-lg font-semibold leading-none">
+    <div className="bg-[#F8F5EE] text-slate-900">
+      <header className="sticky top-0 z-50 border-b border-[#0E4D78]/10 bg-[#F8F5EE]/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+          <a href="#top" className="flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0E4D78] text-white shadow-lg shadow-[#0E4D78]/15">
+              <Waves size={22} />
+            </span>
+            <span className="leading-tight">
+              <span className="block text-[15px] font-semibold text-[#0E4D78]">
                 'a Fenestella
-              </p>
-              <p className="mt-1 text-sm text-slate-500">
-                Artigianato Ischitano · bozza vetrina Vite + JSX
-              </p>
-            </div>
-          </div>
+              </span>
+              <span className="block text-xs tracking-[0.22em] text-slate-500 uppercase">
+                Artigianato Ischitano
+              </span>
+            </span>
+          </a>
 
-          <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+          <nav className="hidden items-center gap-2 text-sm md:flex">
             <a
-              className="rounded-full px-3 py-2 hover:bg-sky-50 hover:text-sky-700"
+              className="rounded-full px-4 py-2 text-slate-600 hover:bg-white hover:text-[#0E4D78]"
+              href="#manifesto"
+            >
+              Manifesto
+            </a>
+            <a
+              className="rounded-full px-4 py-2 text-slate-600 hover:bg-white hover:text-[#0E4D78]"
+              href="#borgo"
+            >
+              Borgo
+            </a>
+            <a
+              className="rounded-full px-4 py-2 text-slate-600 hover:bg-white hover:text-[#0E4D78]"
               href="#collezione"
             >
               Collezione
             </a>
             <a
-              className="rounded-full px-3 py-2 hover:bg-sky-50 hover:text-sky-700"
-              href="#storia"
-            >
-              Storia
-            </a>
-            <a
-              className="rounded-full px-3 py-2 hover:bg-sky-50 hover:text-sky-700"
+              className="rounded-full px-4 py-2 text-slate-600 hover:bg-white hover:text-[#0E4D78]"
               href="#visita"
             >
               Visita
             </a>
           </nav>
-        </header>
+        </div>
+      </header>
 
-        {/* Hero */}
-        <main className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <section className="relative overflow-hidden rounded-[2.25rem] border border-sky-100 bg-white p-6 shadow-[0_30px_80px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10">
-            <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(14,165,233,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(14,165,233,0.08)_1px,transparent_1px)] bg-size:[42px_42px]" />
-            <div className="relative z-10 flex flex-wrap gap-3">
-              <Badge>Ischia Ponte</Badge>
-              <Badge>White · Blue · Ceramic mood</Badge>
-              <Badge>Vetrina boutique</Badge>
-            </div>
+      <main
+        id="top"
+        className="mx-auto max-w-7xl px-5 pb-8 pt-6 sm:px-6 lg:px-8"
+      >
+        {/* HERO */}
+        <section className="relative overflow-hidden rounded-[42px] bg-[#0E4D78] text-white shadow-[0_28px_80px_rgba(14,77,120,0.22)]">
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.20) 0, transparent 16%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.12) 0, transparent 18%), linear-gradient(115deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 100%)",
+              backgroundSize: "100% 100%, 100% 100%, 44px 44px",
+            }}
+          />
+          <div className="absolute inset-0 opacity-25">
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 0)",
+                backgroundSize: "20px 20px",
+              }}
+            />
+          </div>
 
-            <div className="relative z-10 mt-8 max-w-3xl">
-              <h1 className="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Una vetrina digitale pulita, luminosa e ispirata alla ceramica
-                ischitana.
+          <div className="relative grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-16">
+            <div className="max-w-3xl">
+              <div className="flex flex-wrap gap-3">
+                <Pill>Ischia Ponte</Pill>
+                <Pill>Bottega artigiana</Pill>
+                <Pill>Ceramica mediterranea</Pill>
+              </div>
+
+              <h1 className="mt-8 font-serif text-5xl leading-[0.95] sm:text-6xl lg:text-8xl">
+                Ogni oggetto racconta Ischia.
               </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-                Questa bozza mette al centro la materia, il bianco delle
-                superfici, il blu del mare e l’idea di un laboratorio elegante.
-                L’obiettivo è far percepire il negozio come un luogo autentico,
-                raffinato e facile da esplorare.
+
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
+                Ceramiche, artigianato e dettagli nati tra il mare, la pietra e
+                le tradizioni dell’isola. Una homepage pensata per trasformare
+                chi arriva da Google Maps in un visitatore reale.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#collezione"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-sky-600 px-6 py-3.5 font-medium text-white shadow-lg shadow-sky-200 transition hover:-translate-y-0.5 hover:bg-sky-700"
-                >
-                  Scopri la collezione <ArrowRight size={18} />
-                </a>
-                <a
-                  href="#visita"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-sky-200 bg-white px-6 py-3.5 font-medium text-sky-800 transition hover:bg-sky-50"
-                >
-                  Contatti e visita <ChevronRight size={18} />
-                </a>
-              </div>
-            </div>
-
-            <div className="relative z-10 mt-10 grid gap-4 md:grid-cols-3">
-              {highlights.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article
-                    key={item.title}
-                    className="rounded-3xl border border-sky-100 bg-sky-50/70 p-5 backdrop-blur-sm"
-                  >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sky-700 shadow-sm">
-                      <Icon size={20} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {item.text}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Right panel */}
-          <aside className="grid gap-6">
-            <div className="rounded-4xl border border-sky-100 bg-linear-to-br from-sky-600 to-blue-700 p-6 text-white shadow-[0_24px_60px_rgba(37,99,235,0.24)]">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-sky-100">
-                    Atmosfera
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold">
-                    Eleganza mediterranea
-                  </h2>
-                </div>
-                <div className="rounded-2xl bg-white/15 p-3">
-                  <Sparkles size={22} />
-                </div>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Button href="#visita">
+                  Visita la bottega <ArrowRight size={18} />
+                </Button>
+                <Button href="#manifesto" variant="ghost">
+                  Scopri la storia <ChevronRight size={18} />
+                </Button>
               </div>
 
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                {[
-                  ["Toni", "Bianco e blu"],
-                  ["Materiali", "Ceramica, creta, dettagli artigianali"],
-                  ["Stile", "Pulito e contemporaneo"],
-                  ["Obiettivo", "Trasformare il negozio in esperienza"],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="rounded-2xl border border-white/15 bg-white/10 p-4"
-                  >
-                    <p className="text-xs uppercase tracking-[0.22em] text-sky-100">
-                      {k}
-                    </p>
-                    <p className="mt-2 text-sm font-medium leading-6">{v}</p>
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-3xl border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 text-white/88">
+                    <MapPin size={18} />
+                    <span className="text-sm font-medium">Ischia Ponte</span>
                   </div>
-                ))}
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    Nel cuore del borgo storico, vicino al Castello Aragonese.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 text-white/88">
+                    <Clock3 size={18} />
+                    <span className="text-sm font-medium">Bottega aperta</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    Spazio piccolo, curato, da vivere con calma.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl border border-white/12 bg-white/8 p-4 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 text-white/88">
+                    <Sparkles size={18} />
+                    <span className="text-sm font-medium">Pezzi unici</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    Oggetti selezionati per chi cerca autenticità.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-4xl border border-sky-100 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-              <div className="flex items-center gap-3">
-                <div className="rounded-2xl bg-sky-50 p-3 text-sky-700">
-                  <Star size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">
-                    Focus visivo
-                  </p>
-                  <p className="text-sm text-slate-500">
-                    Modulare, morbido, premium
-                  </p>
-                </div>
-              </div>
+            <div className="relative mx-auto w-full max-w-130">
+              <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-[#D8B26A]/30 blur-2xl" />
+              <div className="absolute -bottom-8 -right-4 h-28 w-28 rounded-full bg-white/15 blur-2xl" />
 
-              <div className="mt-5 rounded-3xl border border-dashed border-sky-200 bg-[linear-gradient(135deg,rgba(224,242,254,0.8),rgba(255,255,255,0.95))] p-5">
-                <div className="flex items-center gap-3 text-sky-800">
-                  <Clock3 size={18} />
-                  <span className="text-sm font-medium">
-                    Bozza pronta per iterazioni rapide
-                  </span>
+              <div className="float-slow overflow-hidden rounded-[36px] border-[14px] border-white bg-[#F8F5EE] shadow-[0_40px_120px_rgba(0,0,0,0.26)]">
+                <div className="relative aspect-[4/5]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.92),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(14,77,120,0.14))]" />
+                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-[1px] bg-[#0E4D78]/10">
+                    <div className="bg-[linear-gradient(145deg,#fefdf8,#e7f2fb)]" />
+                    <div className="bg-[linear-gradient(145deg,#0E4D78,#1C6EA4)]" />
+                    <div className="bg-[linear-gradient(145deg,#dfeaf3,#fbf8f1)]" />
+                    <div className="bg-[linear-gradient(145deg,#1C6EA4,#0E4D78)]" />
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col justify-between p-6">
+                    <div className="flex justify-end">
+                      <span className="rounded-full border border-white/70 bg-white/20 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white backdrop-blur">
+                        Finestra sul mare
+                      </span>
+                    </div>
+
+                    <div className="rounded-[28px] border border-white/15 bg-white/12 p-5 backdrop-blur-sm">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-[#0E4D78]">
+                          <Landmark size={18} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold">
+                            La bottega è il prodotto
+                          </p>
+                          <p className="text-sm text-white/70">
+                            Il luogo prima dell’oggetto.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Puoi sostituire facilmente testi, immagini, logo e CTA senza
-                  toccare la struttura.
-                </p>
               </div>
             </div>
-          </aside>
-        </main>
+          </div>
+        </section>
 
-        {/* Content sections */}
-        <section
-          id="storia"
-          className="mt-6 rounded-[2.25rem] border border-sky-100 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)] sm:p-8 lg:p-10"
-        >
-          <SectionTitle
-            eyebrow="Storia e identità"
-            title="Raccontare il negozio senza appesantire la pagina"
-            text="La struttura privilegia spazi ampi, titoli netti e blocchi informativi molto leggibili. Il risultato è una homepage che resta elegante anche su mobile."
+        {/* MANIFESTO */}
+        <section id="manifesto" className="py-20 sm:py-28">
+          <SectionHeading
+            eyebrow="Manifesto"
+            title={
+              <>
+                Non realizziamo souvenir.
+                <br />
+                Custodiamo frammenti di Ischia.
+              </>
+            }
+            text="La pagina parla come una bottega elegante: poche parole, nessuna confusione, massima identità. Il visitatore deve capire subito dove si trova, cosa trova dentro e perché vale la pena entrare."
+            centered
           />
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mt-14 grid gap-4 md:grid-cols-3">
             {[
               {
-                icon: ShieldCheck,
-                title: "Autenticità",
-                text: "Messaggio chiaro: non un e-commerce generico, ma un luogo con una storia precisa.",
+                icon: Shell,
+                title: "Mediterraneo",
+                text: "Palette chiara, blu marino e dettagli sabbia per richiamare Ischia senza cadere nel folclore.",
               },
               {
-                icon: Waves,
-                title: "Territorio",
-                text: "Il blu richiama il mare di Ischia e dà continuità al linguaggio visivo.",
+                icon: ScanText,
+                title: "Editoriale",
+                text: "Blocchi ampi, titoli importanti e ritmo visivo pensato come una rivista di design.",
               },
               {
-                icon: HandHeart,
-                title: "Artigianalità",
-                text: "Le card e i riquadri sembrano pezzi esposti in una piccola galleria.",
+                icon: CircleDashed,
+                title: "Autentico",
+                text: "Messaggi semplici e diretti: bottega, ceramica, oggetti, borgo, visita reale.",
               },
             ].map((item) => {
               const Icon = item.icon;
               return (
                 <article
                   key={item.title}
-                  className="rounded-3xl border border-sky-100 bg-sky-50/60 p-5"
+                  className="rounded-[30px] border border-[#0E4D78]/8 bg-white p-6 shadow-[0_16px_50px_rgba(15,23,42,0.05)]"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sky-700 shadow-sm">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0E4D78]/8 text-[#0E4D78]">
                     <Icon size={20} />
                   </div>
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">
+                  <h3 className="mt-5 text-2xl font-semibold text-[#0E4D78]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     {item.text}
                   </p>
                 </article>
@@ -312,112 +353,152 @@ export default function App() {
           </div>
         </section>
 
+        {/* BORGO */}
         <section
-          id="collezione"
-          className="mt-6 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]"
+          id="borgo"
+          className="grid gap-6 lg:grid-cols-2 lg:items-stretch"
         >
-          <div className="rounded-[2.25rem] border border-sky-100 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)] sm:p-8 lg:p-10">
-            <SectionTitle
-              eyebrow="Collezione"
-              title="Tre blocchi semplici per vendere meglio"
-              text="La pagina può essere estesa con foto prodotto, descrizioni brevi e un mini catalogo. Qui la base è volutamente essenziale."
+          <div className="rounded-[36px] bg-[linear-gradient(145deg,#dfeaf3,#f8f5ee)] p-8 sm:p-10 lg:p-14">
+            <SectionHeading
+              eyebrow="Il borgo"
+              title={
+                <>
+                  Dove tutto ha
+                  <br />
+                  origine.
+                </>
+              }
+              text="‘a Fenestella si trova nel cuore di Ischia Ponte, tra vicoli storici e il Castello Aragonese. Il contesto è parte del prodotto: chi arriva qui cerca un pezzo vero dell’isola, non un oggetto qualsiasi."
             />
-
-            <div className="mt-8 space-y-4">
-              {products.map((product, idx) => (
-                <div
-                  key={product.name}
-                  className="flex gap-4 rounded-3xl border border-sky-100 bg-sky-50/50 p-4"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-sky-700 shadow-sm">
-                    <span className="text-sm font-semibold">0{idx + 1}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      {product.name}
-                    </h3>
-                    <p className="mt-1 text-sm leading-6 text-slate-600">
-                      {product.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Pill>Ischia Ponte</Pill>
+              <Pill>Vicoli storici</Pill>
+              <Pill>Castello Aragonese</Pill>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[2.25rem] border border-sky-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(239,246,255,0.95))] p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)] sm:p-8 lg:p-10">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                "Ceramica smaltata",
-                "Motivi marini",
-                "Oggetti da regalo",
-                "Complementi d’arredo",
-              ].map((label) => (
-                <div
-                  key={label}
-                  className="rounded-[1.75rem] border border-sky-100 bg-white p-5 text-sm font-medium text-sky-900 shadow-sm"
-                >
-                  {label}
+          <div className="overflow-hidden rounded-[36px] border border-[#0E4D78]/8 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+            <div className="grid h-full min-h-[420px] grid-rows-[1fr_auto]">
+              <div className="bg-[radial-gradient(circle_at_20%_30%,rgba(28,110,164,0.18),transparent_20%),radial-gradient(circle_at_78%_18%,rgba(216,178,106,0.36),transparent_18%),linear-gradient(180deg,#0E4D78 0%,#1C6EA4 100%)] p-8 text-white">
+                <div className="flex h-full items-end">
+                  <div className="max-w-md">
+                    <p className="text-xs uppercase tracking-[0.35em] text-white/70">
+                      Vista dal borgo
+                    </p>
+                    <p className="mt-4 font-serif text-4xl leading-[1.02]">
+                      Una finestra aperta
+                      <br />
+                      sul Mediterraneo.
+                    </p>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div className="mt-6 rounded-4xl border border-sky-100 bg-white p-6">
-              <p className="text-sm uppercase tracking-[0.22em] text-sky-500">
-                Visual direction
-              </p>
-              <h3 className="mt-2 text-2xl font-semibold text-slate-900">
-                Molto bianco, molto respiro, pochi fronzoli.
-              </h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">
-                La texture a griglia richiama le piastrelle ceramiche, mentre i
-                gradienti soft danno profondità senza appesantire.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
-                <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5">
-                  Tailwind CSS
-                </span>
-                <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5">
-                  Vite.js
-                </span>
-                <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5">
-                  JSX
-                </span>
-                <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5">
-                  Responsive
-                </span>
+              <div className="flex items-center justify-between gap-4 p-6">
+                <div>
+                  <p className="text-sm font-semibold text-[#0E4D78]">
+                    Via Luigi Mazzella 38
+                  </p>
+                  <p className="mt-1 text-sm text-slate-500">
+                    80077 Ischia Ponte, NA
+                  </p>
+                </div>
+                <a
+                  href="https://maps.app.goo.gl/ZSmDsw242jDfAmsCA"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#0B3F63]"
+                >
+                  Apri Maps <ArrowRight size={16} />
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="mt-6 rounded-[2.25rem] border border-sky-100 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)] sm:p-8 lg:p-10">
-          <SectionTitle
-            eyebrow="Come funziona"
-            title="Una struttura facile da rifinire"
-            text="Il layout è già suddiviso in blocchi: hero, identità, collezione, visita e CTA finale. È pensato per essere ripulito, ridotto o ampliato senza riscrivere tutto."
+        {/* COLLEZIONE */}
+        <section id="collezione" className="py-20 sm:py-28">
+          <SectionHeading
+            eyebrow="Collezione"
+            title={
+              <>
+                Porta a casa un
+                <br />
+                frammento di Ischia.
+              </>
+            }
+            text="Una galleria che funziona bene anche senza foto reali. Quando avrai immagini del negozio o dei prodotti, sostituirai i blocchi astratti con vere preview senza toccare l’architettura del layout."
+            centered
           />
 
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {steps.map((step, index) => {
+          <div className="mt-14 columns-2 gap-5 md:columns-3">
+            {gallery.map((item, index) => {
+              const tall = index % 3 === 0;
+              return (
+                <article
+                  key={item.title}
+                  className={`mb-5 overflow-hidden rounded-[30px] border border-[#0E4D78]/8 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.05)] ${
+                    tall ? "aspect-[4/5]" : "aspect-[1/1]"
+                  }`}
+                >
+                  <div className="flex h-full flex-col justify-between p-5">
+                    <div className="flex items-center justify-between">
+                      <span className="rounded-full bg-[#0E4D78] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white">
+                        {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                      </span>
+                      <Sparkles size={18} className="text-[#1C6EA4]" />
+                    </div>
+
+                    <div>
+                      <div
+                        className={`rounded-3xl bg-[linear-gradient(145deg,rgba(255,255,255,0.8),rgba(28,110,164,0.08),rgba(14,77,120,0.12))] ${
+                          tall ? "h-44" : "h-28"
+                        }`}
+                      />
+                      <h3 className="mt-5 text-2xl font-semibold text-[#0E4D78]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        {item.label}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ARTIGIANATO */}
+        <section className="overflow-hidden rounded-[36px] bg-[#0E4D78] px-6 py-20 text-white shadow-[0_24px_80px_rgba(14,77,120,0.22)] sm:px-10 lg:px-14">
+          <SectionHeading
+            eyebrow="Gli artigiani"
+            title={
+              <>
+                Dietro ogni oggetto
+                <br />
+                c’è una storia.
+              </>
+            }
+            text="Il tono cambia: qui la homepage diventa più intima, quasi manifestaria. È il punto perfetto per raccontare processo, mano e materia con una timeline essenziale."
+          />
+
+          <div className="mt-14 grid gap-4 lg:grid-cols-4">
+            {process.map((step, index) => {
               const Icon = step.icon;
               return (
                 <article
                   key={step.title}
-                  className="rounded-[1.75rem] border border-sky-100 bg-sky-50/50 p-5"
+                  className="rounded-[28px] border border-white/10 bg-white/8 p-6 backdrop-blur-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sky-700 shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0E4D78]">
                       <Icon size={20} />
                     </div>
-                    <span className="text-sm font-semibold text-sky-500">
+                    <span className="text-sm font-semibold text-white/70">
                       0{index + 1}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                  <h3 className="mt-5 text-2xl font-semibold">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/75">
                     {step.text}
                   </p>
                 </article>
@@ -426,64 +507,83 @@ export default function App() {
           </div>
         </section>
 
-        <section
-          id="visita"
-          className="mt-6 overflow-hidden rounded-[2.25rem] border border-sky-100 bg-linear-to-br from-sky-700 via-blue-700 to-sky-800 p-6 text-white shadow-[0_30px_80px_rgba(37,99,235,0.24)] sm:p-8 lg:p-10"
-        >
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.24em] text-sky-100">
-                Visita e contatto
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Pronta per una versione finale con foto, testi e bottoni reali.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-sky-100/90">
-                Inserisci qui indirizzo, telefono, orari e link alle mappe. La
-                pagina è già impostata per diventare una vetrina vera, non solo
-                un mockup.
-              </p>
+        {/* VISITA */}
+        <section id="visita" className="py-20 sm:py-28">
+          <div className="rounded-[40px] border border-[#0E4D78]/10 bg-white p-7 shadow-[0_20px_70px_rgba(15,23,42,0.06)] sm:p-10 lg:p-14">
+            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <SectionHeading
+                eyebrow="Come trovarci"
+                title={
+                  <>
+                    Vieni a trovarci
+                    <br />
+                    nel borgo.
+                  </>
+                }
+                text="Qui la conversione è semplice: fai capire subito dove sei, quando puoi entrare e come raggiungere la bottega. Per un turista questo è il blocco più importante della pagina."
+              />
 
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-sky-50/95">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5">
-                  <MapPin size={14} /> Ischia, Via Luigi Mazzella 38
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5">
-                  <Phone size={14} /> Telefono da inserire
-                </span>
-              </div>
-            </div>
+              <div className="rounded-[30px] bg-[linear-gradient(145deg,#f8f5ee,#eaf2f8)] p-6">
+                <div className="space-y-5">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-1 text-[#0E4D78]" size={18} />
+                    <div>
+                      <p className="font-semibold text-[#0E4D78]">
+                        Via Luigi Mazzella 38
+                      </p>
+                      <p className="text-sm text-slate-600">
+                        80077 Ischia Ponte, Napoli
+                      </p>
+                    </div>
+                  </div>
 
-            <div className="rounded-[1.75rem] bg-white p-5 text-slate-900 shadow-2xl shadow-sky-950/20">
-              <div className="flex items-center gap-3">
-                <div className="rounded-2xl bg-sky-50 p-3 text-sky-700">
-                  <MapPin size={20} />
+                  <div className="flex items-start gap-3">
+                    <Phone className="mt-1 text-[#0E4D78]" size={18} />
+                    <div>
+                      <p className="font-semibold text-[#0E4D78]">
+                        081 708 1860
+                      </p>
+                      <p className="text-sm text-slate-600">Telefono negozio</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Clock3 className="mt-1 text-[#0E4D78]" size={18} />
+                    <div>
+                      <p className="font-semibold text-[#0E4D78]">Orari</p>
+                      <p className="text-sm text-slate-600">
+                        Tutti i giorni 11:00–13:30
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold">CTA finale</p>
-                  <p className="text-sm text-slate-500">
-                    Doppia azione: visita o contatto
-                  </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Button href="https://maps.app.goo.gl/ZSmDsw242jDfAmsCA">
+                    Apri Maps
+                  </Button>
+                  <Button href="tel:+390817081860" variant="light">
+                    Chiama
+                  </Button>
                 </div>
-              </div>
-              <div className="mt-5 space-y-3">
-                <a
-                  href="#"
-                  className="flex items-center justify-between rounded-2xl bg-sky-600 px-4 py-3 font-medium text-white"
-                >
-                  Apri su Google Maps <ArrowRight size={18} />
-                </a>
-                <a
-                  href="#"
-                  className="flex items-center justify-between rounded-2xl border border-sky-200 bg-white px-4 py-3 font-medium text-sky-800"
-                >
-                  Chiama il negozio <Phone size={18} />
-                </a>
               </div>
             </div>
           </div>
         </section>
-      </div>
+
+        {/* FOOTER */}
+        <footer className="pb-8">
+          <div className="rounded-[40px] bg-[#0E4D78] px-6 py-16 text-center text-white sm:px-10 lg:px-16">
+            <p className="mx-auto max-w-4xl font-serif text-3xl leading-[1.25] sm:text-4xl lg:text-5xl">
+              Realizzato tra il mare di Ischia, le mani degli artigiani e il
+              tempo necessario a fare le cose bene.
+            </p>
+            <p className="mt-10 text-sm uppercase tracking-[0.28em] text-white/70">
+              'a Fenestella · Artigianato Ischitano
+            </p>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }

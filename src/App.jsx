@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   ArrowRight,
@@ -404,7 +405,8 @@ export default function App() {
                   </p>
                 </div>
                 <a
-                  href="https://maps.app.goo.gl/ZSmDsw242jDfAmsCA"
+                  href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
+                  target="_blank"
                   className="inline-flex items-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#0B3F63]"
                 >
                   Apri Maps <ArrowRight size={16} />
@@ -559,7 +561,11 @@ export default function App() {
                 </div>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Button href="https://maps.app.goo.gl/ZSmDsw242jDfAmsCA">
+                  <Button
+                    href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
+                    variant="primary"
+                    target="_blank"
+                  >
                     Apri Maps
                   </Button>
                   <Button href="tel:+390817081860" variant="light">

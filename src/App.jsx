@@ -357,87 +357,107 @@ export default function App() {
         {/* BORGO */}
         <section
           id="borgo"
-          className="grid gap-6 lg:grid-cols-2 lg:items-stretch"
+          className="grid gap-10 lg:grid-cols-2 lg:items-stretch"
         >
-          <div className="rounded-[36px] bg-[linear-gradient(145deg,#dfeaf3,#f8f5ee)] p-8 sm:p-10 lg:p-14">
-            <SectionHeading
-              eyebrow="Il borgo"
-              title={
-                <>
-                  Dove tutto ha
-                  <br />
-                  origine.
-                </>
-              }
-              text="‘a Fenestella si trova nel cuore di Ischia Ponte, tra vicoli storici e il Castello Aragonese. Il contesto è parte del prodotto: chi arriva qui cerca un pezzo vero dell’isola, non un oggetto qualsiasi."
-            />
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Pill>Ischia Ponte</Pill>
-              <Pill>Vicoli storici</Pill>
-              <Pill>Castello Aragonese</Pill>
+          {/* LEFT - STORY */}
+          <div className="rounded-[40px] bg-[linear-gradient(145deg,#dfeaf3,#f8f5ee)] p-8 sm:p-10 lg:p-14 flex flex-col justify-between">
+            <div>
+              <SectionHeading
+                eyebrow="Il borgo"
+                title={
+                  <>
+                    Dove tutto ha
+                    <br />
+                    origine.
+                  </>
+                }
+                text="‘a Fenestella si trova nel cuore di Ischia Ponte, tra vicoli storici e il Castello Aragonese. Qui il contesto non è sfondo: è parte del prodotto."
+              />
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Pill>Ischia Ponte</Pill>
+                <Pill>Vicoli storici</Pill>
+                <Pill>Castello Aragonese</Pill>
+              </div>
+            </div>
+
+            {/* MICRO CTA CONTEXT */}
+            <div className="mt-12 rounded-3xl bg-white/60 p-5 backdrop-blur">
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                Esperienza reale
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Non è solo una bottega: è un punto dentro il borgo che si
+                attraversa a piedi.
+              </p>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[36px] border border-[#0E4D78]/8 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-            <div className="grid h-full min-h-105 grid-rows-[1fr_auto]">
-              <div className="bg-[radial-gradient(circle_at_20%_30%,rgba(28,110,164,0.18),transparent_20%),radial-gradient(circle_at_78%_18%,rgba(216,178,106,0.36),transparent_18%),linear-gradient(180deg,#0E4D78 0%,#1C6EA4 100%)] p-8 text-white">
-                <div className="flex h-full items-end">
-                  <div className="max-w-md">
-                    <p className="text-xs uppercase tracking-[0.35em] text-white/70">
-                      Vista dal borgo
-                    </p>
-                    <p className="mt-4 font-serif text-4xl leading-[1.02]">
-                      Una finestra aperta
-                      <br />
-                      sul Mediterraneo.
-                    </p>
-                  </div>
-                </div>
+          {/* RIGHT - EXPERIENCE */}
+          <div className="flex flex-col gap-6">
+            {/* HERO VIEW */}
+            <div className="relative overflow-hidden rounded-[40px] shadow-[0_25px_80px_rgba(15,23,42,0.12)]">
+              <div className="bg-[radial-gradient(circle_at_20%_30%,rgba(28,110,164,0.18),transparent_20%),radial-gradient(circle_at_78%_18%,rgba(216,178,106,0.36),transparent_18%),linear-gradient(180deg,#0E4D78 0%,#1C6EA4 100%)] p-10 text-white">
+                <p className="text-xs uppercase tracking-[0.35em] text-white/70">
+                  Vista dal borgo
+                </p>
+
+                <p className="mt-4 font-serif text-4xl leading-[1.05]">
+                  Una finestra aperta
+                  <br />
+                  sul Mediterraneo.
+                </p>
+
+                <p className="mt-6 max-w-md text-sm text-white/70">
+                  Tra pietra, mare e luce: tutto quello che vedi qui è a pochi
+                  passi dalla bottega.
+                </p>
+              </div>
+            </div>
+
+            {/* MAP + INFO CARD */}
+            <div className="grid gap-5 rounded-[32px] border border-[#0E4D78]/10 bg-white p-5 shadow-sm sm:grid-cols-[1.2fr_0.8fr]">
+              {/* MAP */}
+              <div className="overflow-hidden rounded-2xl border border-slate-200">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s'a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
+                  className="h-64 w-full sm:h-72"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
 
-              <div className="grid gap-6 rounded-3xl border border-[#0E4D78]/10 bg-white p-5 shadow-sm sm:grid-cols-[1.2fr_0.8fr] sm:items-center">
-                {/* MAPPA */}
-                <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d711.0376472676086!2d13.959191892241467!3d40.73211578793719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b6b2766ffb5b9%3A0x47c87faf808d5ce2!2s'a%20Fenestella%20-%20artigianato%20Ischitano!5e1!3m2!1sit!2sit!4v1781348315431!5m2!1sit!2sit"
-                    className="h-64 w-full sm:h-72"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
+              {/* INFO */}
+              <div className="flex flex-col justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                    Indirizzo
+                  </p>
+
+                  <p className="mt-2 text-base font-semibold text-[#0E4D78]">
+                    Via Luigi Mazzella 38
+                  </p>
+
+                  <p className="mt-1 text-sm text-slate-500">
+                    80077 Ischia Ponte, Napoli
+                  </p>
+
+                  <p className="mt-4 text-sm leading-6 text-slate-600">
+                    Nel cuore del borgo storico, a pochi passi dal Castello
+                    Aragonese.
+                  </p>
                 </div>
 
-                {/* INFO + CTA */}
-                <div className="flex h-full flex-col justify-between gap-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
-                      Dove siamo
-                    </p>
-
-                    <p className="mt-2 text-base font-semibold text-[#0E4D78]">
-                      Via Luigi Mazzella 38
-                    </p>
-
-                    <p className="mt-1 text-sm text-slate-500">
-                      80077 Ischia Ponte, Napoli
-                    </p>
-
-                    <p className="mt-4 text-sm leading-6 text-slate-600">
-                      Nel cuore del borgo storico, a pochi passi dal Castello
-                      Aragonese.
-                    </p>
-                  </div>
-
-                  <a
-                    href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_30px_rgba(14,77,120,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0B3F63]"
-                  >
-                    Apri su Google Maps <ArrowRight size={16} />
-                  </a>
-                </div>
+                <a
+                  href="https://maps.app.goo.gl/Vbcmx7tFNejgEKbW9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0E4D78] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_30px_rgba(14,77,120,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0B3F63]"
+                >
+                  Apri su Maps <ArrowRight size={16} />
+                </a>
               </div>
             </div>
           </div>

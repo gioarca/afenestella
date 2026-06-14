@@ -517,7 +517,7 @@ export default function App() {
         </section>
 
         {/* ARTIGIANATO */}
-        <section className="overflow-hidden rounded-[36px] bg-[#0E4D78] px-6 py-20 text-white sm:px-10 lg:px-14">
+        <section className="overflow-hidden rounded-[36px] bg-[#0E4D78] text-white px-6 py-20 sm:px-10 lg:px-14">
           <SectionHeading
             eyebrow="Gli artigiani"
             title={
@@ -539,15 +539,15 @@ export default function App() {
                   className="rounded-[28px] border border-white/10 bg-white/8 p-6 backdrop-blur-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0E4D78]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-black">
                       <Icon size={20} />
                     </div>
-                    <span className="text-sm font-semibold text-white/70">
+                    <span className="text-sm font-semibold text-white">
                       0{index + 1}
                     </span>
                   </div>
                   <h3 className="mt-5 text-2xl font-semibold">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/75">
+                  <p className="mt-3 text-sm leading-7 text-white">
                     {step.text}
                   </p>
                 </article>

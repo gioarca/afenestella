@@ -398,17 +398,17 @@ export default function App() {
             {/* HERO VIEW */}
             <div className="relative overflow-hidden rounded-[40px] shadow-[0_25px_80px_rgba(15,23,42,0.12)]">
               <div className="bg-[radial-gradient(circle_at_20%_30%,rgba(28,110,164,0.18),transparent_20%),radial-gradient(circle_at_78%_18%,rgba(216,178,106,0.36),transparent_18%),linear-gradient(180deg,#0E4D78 0%,#1C6EA4 100%)] p-10 text-white">
-                <p className="text-xs uppercase tracking-[0.35em] text-white/70">
+                <p className="text-xs text-black uppercase tracking-[0.35em]">
                   Vista dal borgo
                 </p>
 
-                <p className="mt-4 font-serif text-4xl leading-[1.05]">
+                <p className="mt-4 font-serif text-black text-4xl leading-[1.05]">
                   Una finestra aperta
                   <br />
                   sul Mediterraneo.
                 </p>
 
-                <p className="mt-6 max-w-md text-sm text-white/70">
+                <p className="mt-6 max-w-md text-sm text-black">
                   Tra pietra, mare e luce: tutto quello che vedi qui è a pochi
                   passi dalla bottega.
                 </p>
@@ -517,14 +517,14 @@ export default function App() {
         </section>
 
         {/* ARTIGIANATO */}
-        <section className="overflow-hidden rounded-[36px] bg-[#0E4D78] px-6 py-20 text-white shadow-[0_24px_80px_rgba(14,77,120,0.22)] sm:px-10 lg:px-14">
+        <section className="overflow-hidden rounded-[36px] bg-[#0E4D78] px-6 py-20 text-white sm:px-10 lg:px-14">
           <SectionHeading
             eyebrow="Gli artigiani"
             title={
               <>
                 Dietro ogni oggetto
                 <br />
-                c’è una storia.
+                c’è storia.
               </>
             }
             text="Il tono cambia: qui la homepage diventa più intima, quasi manifestaria. È il punto perfetto per raccontare processo, mano e materia con una timeline essenziale."

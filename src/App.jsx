@@ -76,9 +76,7 @@ function SectionHeading({ eyebrow, title, text, centered = false }) {
       <h2 className="font-serif text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
         {title}
       </h2>
-      <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
-        {text}
-      </p>
+      <p className="mt-6 text-base leading-8 text-white sm:text-lg">{text}</p>
     </div>
   );
 }
